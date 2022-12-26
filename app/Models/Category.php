@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Category extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes;
+    use HasFactory, Sluggable;
 
     protected $fillable = [
         'name',

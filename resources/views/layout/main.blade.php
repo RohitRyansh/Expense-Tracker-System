@@ -17,9 +17,9 @@
                 <ul class="navcontent"> 
                     <li></li> 
                     <li><a href=" {{ route('dashboard')}} " class="navlink">Dashboard</a></li>
-                    <li><a href=" {{ route('categories.create')}} " class="navlink">Create Category</a></li>
+                    <li><a href=" {{ route('categories.create')}} " class="navlink">Add Category</a></li>
                     <li><a href=" {{ route('expenses.create')}} " class="navlink">Add Expense</a></li>
-                    <li><a href="  " class="navlink">Listing</a></li>
+                    <li><a href=" {{ route('expenses.listing')}} " class="navlink">Listing</a></li>
                 </ul>
             </div>
             <div class="index">

@@ -21,7 +21,7 @@
                 <td>  {{ $expense->item_name  }}  </td>
                 <td>  {{ $expense->cost }}  </td>
                 <div class="course-image">
-                    <img src="{{asset('storage/'.$expense->images->bill)}}" alt="not found">
+                    {{-- <img src="{{asset('storage/'.$expense->attachments->bill)}}" alt="not found"> --}}
                 </div>
             </tr>
             @endforeach

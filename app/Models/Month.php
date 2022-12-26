@@ -22,9 +22,4 @@ class Month extends Model
 
         return $this->hasManyThrough(Expense::class, Category::class);
     }
-
-    // public function scopeVisibleTo($query, $month) {
-        
-    //     return $query->where('created_at', Category::whereMonth('created_at', '=', $month->id));
-    // }
 }

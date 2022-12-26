@@ -16,20 +16,15 @@ class CategoryController extends Controller
             'categories' => Category::with('expenses')
             ->VisibleByMonth($month)
             ->get(),
-            'month' => $month,
         ]);
     } 
     
     public function create() {
 
-        $month = Carbon::parse(now())->format('m');
-
-        return view ('category.create', [
-            'month' => $month
-        ]);
+        return view ('category.create');
     }
 
-    public function store(Request $request, Month $month) {
+    public function store(Request $request) {
         
         $attributes = $request->validate ([
             'name' => 'required|string|min:3|max:255',
@@ -39,22 +34,7 @@ class CategoryController extends Controller
             'month_id' => Carbon::parse(now())->format('m')
         ];
 
-        $category = Category::where('name', $attributes['name'])
-            ->withTrashed()
-            ->first();
-
-        if ($category) {
-
-            if ($category->deleted_at != null) {
-
-                $category->restore();
-                $category->update($attributes);
-            }
-            
-        } else {
-
             $category = Category::create($attributes);
-        }
         
         if ($request['create'] == 'create') {  
 

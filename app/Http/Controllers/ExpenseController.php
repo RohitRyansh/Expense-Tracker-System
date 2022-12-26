@@ -30,10 +30,10 @@ class ExpenseController extends Controller
 
         $attributes = $request->validate ([
                 'item_name' => 'required|string|min:3|max:255',
-                'date_of_expense' => 'required|before:today',
+                'date_of_expense' => 'required|before:tomorrow',
                 'cost' => 'required|integer|gt:0',
                 'category_id' => ['required',
-                Rule::in(Category::Visibleto()
+                Rule::in(Category::VisibleTo()
                     ->get()
                     ->pluck('id')
                     ->toArray()
@@ -44,7 +44,7 @@ class ExpenseController extends Controller
         );
 
         $request->file('bill')
-            ->store('/images');
+            ->store('/attachements');
 
         Expense::create($attributes);
          

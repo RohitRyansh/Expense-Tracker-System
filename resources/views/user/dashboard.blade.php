@@ -2,12 +2,22 @@
 @section('content')
 <div class="allcontent">
     @if (session('success'))
-        <p class="succesmessage">  {{  session('success')  }}  </p>
+        <p class="succesmessage">  {{ session('success') }}  </p>
     @endif
-    <ul class="dropdown-menu">
+    <table class="table">
+        <tr class="table-heading">
+            <th>Month</th>
+            <th>Total Expenses</th>
+            <th>Comparision</th>
+        </tr>
         @foreach ($months as $month)
-            <li><a class="dropdown-item" href=" {{ route('categories.month', $month)}} ">{{ $month->name }}</a></li>
-            <p>{{ $month->expenses->sum('cost')}}</p>
+        <tr>
+            <td><a href=" {{ route('categories.month', $month)}} ">{{ $month->name }}</a></td>
+            <td>{{ $month->expenses->sum('cost')}}</td>
+                
+                <td>{{ $month->total_expenses}}</td>
+        </tr>
         @endforeach
-    </ul>
+    </table>
+</div>
 @endsection

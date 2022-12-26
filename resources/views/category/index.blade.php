@@ -14,7 +14,8 @@
             <tr class="table-heading">
                 <th>Name</th>
                 <th>Created date</th>
-                <th></th>
+                <th>Edit</th>
+                <th>Total Expenses</th>
             </tr>
             @foreach($categories as $category)
             <tr>
@@ -22,17 +23,10 @@
                 <td>  {{ $category->created_at  }}  </td>
                 <td>
                     <div class="btn-group">
-                        <button class="icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-three-dots"></i>
-                        </button>
-                        <ul class="dropdown-menu"> 
-                            <li class="drop-items">
-                                <div class="drop-items-icon">
-                                    <i class="bi bi-wrench-adjustable"></i>
-                                    <a href="{{ route('categories.edit', $category) }} ">Edit Category</a>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="drop-items-icon">
+                            <i class="bi bi-wrench-adjustable"></i>
+                            <a href="{{ route('categories.edit', $category) }} ">Edit Category</a>
+                        </div>     
                     </div>
                 </td>
                 <td>{{ $category->expenses->sum('cost')}}</td>
