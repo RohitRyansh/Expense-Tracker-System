@@ -30,7 +30,7 @@
             <th>Total Expenses</th>
         @foreach ($months as $month)
         <tr>
-            <td><a href=" {{ route('categories.month', $month)}} ">{{ $month->name }}</a></td>
+            <td><a href=" {{ route('categories.month', $month)}}">{{ $month->name }}</a></td>
             <td>{{ $month->expenses->sum('cost') }}</td> 
         </tr>
         @endforeach
@@ -45,7 +45,11 @@
         @endphp
         @foreach ($comparisions as $comparision)
         <tr class="table-heading2">
-            <td>{{ $comparision .'%'}}</td> 
+            @if ($comparision>0)   
+            <td class="green">{{ number_format($comparision,2) .'%'}}</td> 
+            @else
+            <td class="red">{{ number_format($comparision,2) .'%'}}</td> 
+            @endif
         </tr>
         @endforeach
     </table>
