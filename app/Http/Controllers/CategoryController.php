@@ -12,10 +12,11 @@ class CategoryController extends Controller
     
     public function index(Month $month) {
 
-        return view ('category.index', [
+            return view ('category.index', [
             'categories' => Category::with('expenses')
             ->VisibleByMonth($month)
             ->get(),
+            'month' => $month
         ]);
     } 
     
@@ -34,7 +35,7 @@ class CategoryController extends Controller
             'month_id' => Carbon::parse(now())->format('m')
         ];
 
-            $category = Category::create($attributes);
+        $category = Category::create($attributes);
         
         if ($request['create'] == 'create') {  
 
@@ -45,14 +46,15 @@ class CategoryController extends Controller
         return back()->with('success', 'Category Created Successfully.');
     }
 
-    public function edit(Category $category) {
+    public function edit(Month $month, Category $category) {
         
         return view ('category.edit', [
-            'category' => $category
+            'category' => $category,
+            'month' => $month
         ]);
     }
 
-    public function update(Request  $request, Category $category) {
+    public function update(Request  $request, Month $month, Category $category) {
         
         $attributes = $request->validate ([
             'name' => ['required','string','min:3','max:255'],
@@ -60,7 +62,7 @@ class CategoryController extends Controller
         
         $category->update($attributes);
 
-        return to_route('categories')
+        return to_route('categories.month', $month)
             ->with('success', 'Category Updated Successfully.');
     }
 }

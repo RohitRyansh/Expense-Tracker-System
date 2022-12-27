@@ -16,16 +16,11 @@ return new class extends Migration
         Schema::create('months', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->float('total_expenses')->default(0);
+            $table->string('slug');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('months');

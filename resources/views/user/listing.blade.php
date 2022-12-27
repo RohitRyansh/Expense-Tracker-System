@@ -51,9 +51,6 @@
                 <td>  {{ $expense->item_name  }}  </td>
                 <td>  {{ $expense->cost }}  </td>
                 <td> {{ $expense->date_of_expense}}</td>
-                <div class="course-image">
-                    {{-- <img src="{{asset('storage/'.$expense->attachments)}}" alt="not found"> --}}
-                </div>
             </tr>
             @endforeach
         </table>

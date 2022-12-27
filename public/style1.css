@@ -534,3 +534,22 @@ a.unit-edit
     display: flex;
     justify-content: space-between;
 }
+.green
+{
+    color: green;
+}
+.red
+{
+    color: red;
+}
+.table2
+{
+    top: 16%;
+    position: absolute;
+    right: 15%;
+}
+
+.table-heading2 td
+{
+    padding: 8.5px;
+}

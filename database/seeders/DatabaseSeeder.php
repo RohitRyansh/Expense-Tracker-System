@@ -25,7 +25,52 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
-        Month::factory(12)->create();
+        Month::create([
+            'name' => 'January',
+        ]);
 
+        Month::create([
+            'name' => 'Febrary',
+        ]);
+
+        Month::create([
+            'name' => 'March',
+        ]);
+
+        Month::create([
+            'name' => 'April',
+        ]);
+
+        Month::create([
+            'name' => 'May',
+        ]);
+
+        Month::create([
+            'name' => 'June',
+        ]);
+
+        Month::create([
+            'name' => 'July',
+        ]);
+
+        Month::create([
+            'name' => 'August',
+        ]);
+
+        Month::create([
+            'name' => 'September',
+        ]);
+
+        Month::create([
+            'name' => 'October',
+        ]);
+
+        Month::create([
+            'name' => 'November',
+        ]);
+
+        Month::create([
+            'name' => 'December',
+        ]);
     }
 }

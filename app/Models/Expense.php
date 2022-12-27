@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Expense extends Model
 {
@@ -17,7 +16,7 @@ class Expense extends Model
         'category_id',
         'date_of_expense',
         'cost',
-        'bill',
+        'bill_path',
     ];
 
     public function sluggable(): array {
@@ -53,10 +52,11 @@ class Expense extends Model
         $query->when($filter['last_week'] ?? false, function($query) {
             
             $previous_week = strtotime("-1 week");
-            $start_week = strtotime("monday", $previous_week);
+            $start_week = strtotime("last monday midnight", $previous_week);
             $start_week = date("Y-m-d", $start_week);
+
             
-            $end_week = strtotime("sunday", $previous_week);
+            $end_week = strtotime("next sunday", $previous_week);
             $end_week = date("Y-m-d", $end_week);
 
             return $query->whereBetween('date_of_expense', [$start_week, $end_week]);
@@ -65,7 +65,6 @@ class Expense extends Model
         $query->when($filter['this_month'] ?? false, function($query) {
 
             return $query->whereMonth('date_of_expense', Carbon::now()->startOfMonth()->format("m"));
-
         }); 
 
         $query->when($filter['last_month'] ?? false, function($query) {

@@ -34,25 +34,30 @@ Route::middleware('auth')->group(function () {
     
     Route::controller(CategoryController::class)->group(function () {
          
-        Route::get ('/categories/{month}/month', 'index')->name ('categories.month');
+        Route::get ('/categories/{month:slug}/month', 'index')->name ('categories.month');
         
         Route::get ('/categories/create', 'create')->name ('categories.create');
         
         Route::post ('/categories/store', 'store')->name ('categories.store');
         
-        Route::get ('/categories/{category:slug}/edit', 'edit')->name ('categories.edit');
+        Route::get ('/categories/{month:slug}/{category:slug}/edit', 'edit')->name ('categories.edit');
         
-        Route::post ('/categories/{category:slug}/update', 'update')->name ('categories.update');
+        Route::post ('/categories/{month:slug}/{category:slug}/update', 'update')->name ('categories.update');
     
     });
 
     Route::controller(ExpenseController::class)->group(function () {
         
-        Route::get ('/categories/{category}/expenses', 'index')->name ('categories.month.expenses');
+        Route::get ('/categories/{month:slug}/{category:slug}/expenses', 'index')->name ('categories.month.expenses');
         
         Route::get ('/expenses/create', 'create')->name('expenses.create');
         
         Route::post ('/expenses/store', 'store')->name('expenses.store');
+
+        Route::get ('/expenses/{month:slug}/{category:slug}/{expense:slug}/edit', 'edit')->name ('expenses.edit');
+        
+        Route::post ('/expenses/{month:slug}/{category:slug}/{expense:slug}/update', 'update')->name ('expenses.update');
+    
     });
 
     Route::get ('/expenses/view', [ExpensesListingController::class, 'index'])->name('expenses.listing');

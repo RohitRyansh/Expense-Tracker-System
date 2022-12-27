@@ -14,15 +14,24 @@
             <tr class="table-heading">
                 <th>Item Name</th>
                 <th>Cost</th>
-                <th></th>
+                <th>Edit</th>
+                <th>View Bill</th>
             </tr>
             @foreach($expenses as $expense)
             <tr>
                 <td>  {{ $expense->item_name  }}  </td>
                 <td>  {{ $expense->cost }}  </td>
-                <div class="course-image">
-                    {{-- <img src="{{asset('storage/'.$expense->attachments->bill)}}" alt="not found"> --}}
-                </div>
+                <td>
+                    <div class="btn-group">
+                        <div class="drop-items-icon">
+                            <i class="bi bi-wrench-adjustable"></i>
+                            <a href="{{ route('expenses.edit', [$month, $category, $expense]) }} ">Edit Expense</a>
+                        </div>     
+                    </div>
+                </td>
+                <td>
+                    <a  href="{{asset('storage/'.$expense->bill_path)}}" target="_blank">view</a>
+                </td>
             </tr>
             @endforeach
         </table>

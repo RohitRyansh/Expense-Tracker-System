@@ -19,13 +19,13 @@
             </tr>
             @foreach($categories as $category)
             <tr>
-            <td><a class="dropdown-item" href=" {{ route('categories.month.expenses', $category)}} ">{{ $category->name }}</a></td>
+            <td><a  href=" {{ route('categories.month.expenses', [$month, $category])}} ">{{ $category->name }}</a></td>
                 <td>  {{ $category->created_at  }}  </td>
                 <td>
                     <div class="btn-group">
                         <div class="drop-items-icon">
                             <i class="bi bi-wrench-adjustable"></i>
-                            <a href="{{ route('categories.edit', $category) }} ">Edit Category</a>
+                            <a href="{{ route('categories.edit', [$month, $category]) }} ">Edit Category</a>
                         </div>     
                     </div>
                 </td>

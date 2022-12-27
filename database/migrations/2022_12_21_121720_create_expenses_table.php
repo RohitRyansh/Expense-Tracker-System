@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('slug');
             $table->date('date_of_expense');
             $table->float('cost')->default(0);
-            $table->text('bill');
+            $table->text('bill_path');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -8,7 +8,7 @@
         </ol>
     </nav>
     <div class="create">
-        <form action="{{ route ('categories.update', $category) }}" method="post" class="createForm">
+        <form action="{{ route ('categories.update', [$month, $category]) }}" method="post" class="createForm">
             @csrf
 
             <div class="mb-3">
@@ -23,7 +23,7 @@
 
             <div class="saveButtons">
                 <button type="submit" value="Update" name="create" class="btn btn-secondary">Edit Category</button>
-                <a href=" {{  route('dashboard')  }} " class="btn btn-outline-secondary">Cancel</a>
+                <a href=" {{  route('categories.month', $month)  }} " class="btn btn-outline-secondary">Cancel</a>
             </div>
         </form>
     </div>

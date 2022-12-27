@@ -11,7 +11,7 @@
         @if (session('success'))
             <p class="succesmessage"> {{ session('success') }} </p>
         @endif
-        <form action=" {{ route ('categories.store')  }} " method="post" class="createForm">
+        <form action=" {{ route ('categories.store') }} " method="post" class="createForm">
             @csrf
             
             <div class="mb-3">
