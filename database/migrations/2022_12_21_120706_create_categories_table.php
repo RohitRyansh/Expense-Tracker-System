@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('month_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug');
-            $table->boolean('status')->default(0);
             $table->integer('created_by')->default(1);
             $table->softDeletes();
             $table->timestamps();

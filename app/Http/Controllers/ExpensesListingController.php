@@ -19,7 +19,7 @@ class ExpensesListingController extends Controller
                     'this_month',
                     'last_month',
                 ]))
-            ->get()
+            ->simplePaginate(5)
         ]);
     }
 
@@ -38,7 +38,7 @@ class ExpensesListingController extends Controller
                     'from',
                     'apply'
                 ]))
-            ->get()
+            ->simplePaginate(5)
         ]);
     }
 }

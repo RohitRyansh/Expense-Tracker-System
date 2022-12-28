@@ -41,22 +41,26 @@
     </div> 
     @if ($expenses->count()>0)
     <table class="table">
-            <tr class="table-heading">
-                <th>Item Name</th>
-                <th>Cost</th>
-                <th>Date of Expense</th>
-            </tr>
-            @foreach($expenses as $expense)
-            <tr>
-                <td>  {{ $expense->item_name  }}  </td>
-                <td>  {{ $expense->cost }}  </td>
-                <td> {{ $expense->date_of_expense}}</td>
-            </tr>
-            @endforeach
-        </table>
+        <tr class="table-heading">
+            <th>Item Name</th>
+            <th>Cost</th>
+            <th>Date of Expense</th>
+            <th>Bill</th>
+        </tr>
+        @foreach($expenses as $expense)
+        <tr>
+            <td>  {{ $expense->item_name  }}  </td>
+            <td>  {{ $expense->cost }}  </td>
+            <td> {{ $expense->date_of_expense}}</td>
+            <td>
+                <a  href="{{asset('storage/'.$expense->bill_path)}}" target="_blank">view</a>
+            </td>
+        </tr>
+        @endforeach
         @else
-        <h1 style="text-align: center;">No Expense Exist</h1>      
+            <h1 style="text-align: center;">No Expense Exist</h1>      
         @endif
-    </div>
+    </table>
+    {{  $expenses->links() }} 
 </div>
 @endsection
