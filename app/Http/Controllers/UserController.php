@@ -8,28 +8,26 @@ class UserController extends Controller
 {
     public function index() {
 
-        $j=0;
+        $j = 0;
         $comparisions = [];
 
         $months = Month::with('categories','expenses')
-            ->orderby('id','desc')
             ->get();
 
-            for ($i= 1; $i <= $months->count(); $i++) {
+            for ($i= 0; $i < $months->count() ; $i++) {
 
-                if ($i == 12) {
-
+                if ($i == 0) {
                     if ($months[$j]->total_expenses == 0) {
                         $comparisions[] += 0;
                     }
                     else {
                         $comparisions[] += 100;
                     }
-                    break;
+                    continue;
                 }
-
-                $current_month =  $months[$j];
-                $previous_month =  $months[$i];
+                
+                $previous_month =  $months[$j];
+                $current_month =  $months[$i];
                 $j++;
                 
                 if ($current_month->total_expenses == 0) {
@@ -43,7 +41,7 @@ class UserController extends Controller
                     / $current_month->total_expenses * 100;    
             }
 
-        for ($i = 0; $i <= $months->count()-1; $i++) {
+        for ($i = 0; $i < $months->count(); $i++) {
 
             $months[$i]->update([
                 'total_expenses' => $months[$i]->expenses->sum('cost'),
