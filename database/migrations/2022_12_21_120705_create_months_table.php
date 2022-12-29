@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->float('total_expenses')->default(0);
+            $table->float('comparisions')->default(0);
             $table->timestamps();
         });
     }

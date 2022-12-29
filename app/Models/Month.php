@@ -11,7 +11,8 @@ class Month extends Model
     use HasFactory, Sluggable;
 
     protected $fillable = [
-        'total_expenses'
+        'total_expenses',
+        'comparisions'
     ];
 
     public function sluggable(): array {
