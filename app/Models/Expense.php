@@ -60,7 +60,6 @@ class Expense extends Model
             $start_week = strtotime("last monday midnight", $previous_week);
             $start_week = date("Y-m-d", $start_week);
 
-            
             $end_week = strtotime("next sunday", $previous_week);
             $end_week = date("Y-m-d", $end_week);
 

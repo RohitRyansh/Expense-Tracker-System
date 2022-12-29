@@ -17,12 +17,7 @@ class UserController extends Controller
             for ($i= 0; $i < $months->count() ; $i++) {
 
                 if ($i == 0) {
-                    if ($months[$j]->total_expenses == 0) {
-                        $comparisions[] += 0;
-                    }
-                    else {
-                        $comparisions[] += 100;
-                    }
+                    $comparisions[] += 0;
                     continue;
                 }
                 
