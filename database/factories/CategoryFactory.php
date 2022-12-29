@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Stringable;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Month>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
-class MonthFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,8 @@ class MonthFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->month(),
+            'name' => fake()->name(),
+            'month_id' => fake()->month(),
         ];
     }
 }

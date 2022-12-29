@@ -35,14 +35,8 @@ class CategoryController extends Controller
             'month_id' => Carbon::parse(now())->format('m')
         ];
 
-        $category = Category::create($attributes);
+        Category::create($attributes);
         
-        if ($request['create'] == 'create') {  
-
-            return to_route('categories.edit', $category)
-                ->with('success',  'Category Created Successfully.');
-        }
-
         return back()->with('success', 'Category Created Successfully.');
     }
 

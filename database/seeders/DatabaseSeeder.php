@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Category;
 use App\Models\Month;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -72,5 +73,7 @@ class DatabaseSeeder extends Seeder
         Month::create([
             'name' => 'December',
         ]);
+
+        Category::factory()->count(10)->create();
     }
 }

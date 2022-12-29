@@ -7,8 +7,20 @@
         @php
             $j=0;
             $comparisions = [];
-            for($i= 1; $i <= $months->count()-1; $i++) {
-                
+            
+            for($i= 1; $i <= $months->count(); $i++) {
+
+                if($i == 12) {
+
+                    if($months[$j]->expenses->sum('cost') == 0) {
+                        $comparisions[] += 0;
+                    }
+                    else {
+                        $comparisions[] += 100;
+                    }
+                    break;
+                }
+
                 $current_month =  $months[$j];
                 $previous_month =  $months[$i];
                 $j++;
@@ -40,15 +52,12 @@
         <tr class="table-heading2">
             <th>Comparision</th>
         </tr>
-        @php
-            $comparisions[] += $months[11]->expenses->sum('cost');
-        @endphp
         @foreach ($comparisions as $comparision)
         <tr class="table-heading2">
             @if ($comparision>0)   
-            <td class="green">{{ number_format($comparision,2) .'%'}}</td> 
+                <td class="green">{{ number_format($comparision,2) .'%'}}</td> 
             @else
-            <td class="red">{{ number_format($comparision,2) .'%'}}</td> 
+                <td class="red">{{ number_format($comparision,2) .'%'}}</td> 
             @endif
         </tr>
         @endforeach

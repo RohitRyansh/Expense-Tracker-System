@@ -15,7 +15,7 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Category Name</label>
-                <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Enter Category Name" required>
+                <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Enter Category Name" value="{{old('name')}}" required>
                 <span class="errorMessage">
                     @error('name')
                      {{ $message }}      
@@ -25,7 +25,6 @@
 
             <div class="saveButtons">
                 <button type="submit" value="create" name="create" class="btn btn-secondary">Create Category</button>
-                <button type="submit" value="create_another" name="create" class="btn btn-secondary">Create Category & Create Another</button>        
                 <a href=" {{  route('dashboard')  }} " class="btn btn-outline-secondary">Cancel</a>
             </div>
         </form>

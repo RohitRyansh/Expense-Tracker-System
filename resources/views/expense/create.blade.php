@@ -16,7 +16,7 @@
             
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Item Name</label>
-                <input type="text" name="item_name" class="form-control" id="exampleFormControlInput1" placeholder="Enter Item Name" required>
+                <input type="text" name="item_name" class="form-control" id="exampleFormControlInput1" placeholder="Enter Item Name" value="{{old('item_name')}}" required>
                 <span class="errorMessage">
                     @error('item_name')
                      {{ $message }}      
@@ -32,7 +32,7 @@
             </select>
 
             <label for="date" class="form-label">Date of Expense</label> 
-            <input type="date" name="date_of_expense" id="">
+            <input type="date" name="date_of_expense" value="{{old('date_of_expense')}}">
             <span class="errorMessage">
                 @error('date_of_expense')
                  {{ $message }}      
@@ -40,7 +40,7 @@
             </span>
 
             <label for="cost" class="form-label">Cost of Expense</label> 
-            <input type="number" name="cost" id="">
+            <input type="number" name="cost" value="{{old('cost')}}">
             <span class="errorMessage">
                 @error('cost')
                  {{ $message }}      

@@ -42,7 +42,7 @@ class ExpenseController extends Controller
                     ->toArray()
                     ),
                 ],
-                'bill_path' => 'mimes:png,jpg,jpeg,pdf'
+                'bill_path' => 'required|mimes:png,jpg,jpeg,pdf|max:2000'
             ]
         );
 
