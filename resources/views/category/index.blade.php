@@ -38,5 +38,6 @@
         <h1 style="text-align: center;">No Category Exist</h1>      
         @endif
     </div>
+    {{  $categories->links() }} 
 </div>
 @endsection

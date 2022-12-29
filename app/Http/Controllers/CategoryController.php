@@ -14,8 +14,8 @@ class CategoryController extends Controller
 
             return view ('category.index', [
             'categories' => Category::with('expenses')
-            ->VisibleByMonth($month)
-            ->get(),
+                ->VisibleByMonth($month)
+                ->simplePaginate(4),
             'month' => $month
         ]);
     } 

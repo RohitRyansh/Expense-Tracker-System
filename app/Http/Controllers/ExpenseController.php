@@ -15,7 +15,7 @@ class ExpenseController extends Controller
 
         return view ('expense.index', [
             'expenses' => Expense::VisibleTo($category->id)
-                ->get(),
+                ->simplePaginate(4),
             'month' => $month,
             'category' => $category
         ]);

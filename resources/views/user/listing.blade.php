@@ -7,7 +7,13 @@
         </div>
     </div>
     <div>
-        <div class="dropdown">  
+        <div class="dropdown"> 
+            <form action=" {{  route('expenses.listing')}}?{{ request()->getQueryString() }} " method="get">
+                <div class="d-flex">
+                    <input class="form-control" type="text" name="search" placeholder="Search by Item Name">
+                    <i class="bi bi-search"></i>
+                </div>
+            </form> 
             <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton1" type="button" data-bs-toggle="dropdown">
                 Sort By
             </button>

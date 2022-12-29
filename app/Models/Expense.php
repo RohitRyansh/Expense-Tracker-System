@@ -44,6 +44,11 @@ class Expense extends Model
 
     public function scopeDataFilter($query, $filter) {
 
+        $query->when($filter['search'] ?? false, function($query, $search) {
+
+            return $query->where('item_name', 'like', '%'. $search . '%');
+        });
+
         $query->when($filter['this_week'] ?? false, function($query) {
 
             return $query->whereBetween('date_of_expense', [Carbon::now()->startOfWeek()->format("Y-m-d"), Carbon::now()]);

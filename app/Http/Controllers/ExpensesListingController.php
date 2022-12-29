@@ -14,6 +14,7 @@ class ExpensesListingController extends Controller
             'expenses' => Expense::ListingAllExpenses()
             ->DataFilter (
                 request ([
+                    'search',
                     'this_week',
                     'last_week',
                     'this_month',

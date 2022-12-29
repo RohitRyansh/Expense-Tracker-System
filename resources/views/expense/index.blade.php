@@ -41,5 +41,6 @@
             <h1 style="text-align: center;">No Expense Exist</h1>      
         @endif
     </div>
+    {{  $expenses->links() }} 
 </div>
 @endsection
