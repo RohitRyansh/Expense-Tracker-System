@@ -17,6 +17,7 @@ class Expense extends Model
         'date_of_expense',
         'cost',
         'bill_path',
+        'month_id'
     ];
 
     public function sluggable(): array {
@@ -32,9 +33,15 @@ class Expense extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function scopeVisibleTo($query, $category) {
-        
-        return  $query->where('category_id', $category);
+    public function month() {
+
+        return $this->belongsTo(Month::class);
+    }
+
+    public function scopeVisibleTo($query, $category, $month) {
+                
+        return  $query->where('category_id', $category->id)
+            ->whereMonth('date_of_expense', $month->id);
     }
 
     public function scopeListingAllExpenses($query) {

@@ -30,6 +30,11 @@
                     <option value=" {{ $category['id'] }} "> {{ $category['name'] }} </option>
                 @endforeach
             </select>
+            <span class="errorMessage">
+            @error('category_id')
+                {{ $message }}      
+            @enderror
+            </span>
 
             <label for="date" class="form-label">Date of Expense</label> 
             <input type="date" name="date_of_expense" value="{{old('date_of_expense')}}">

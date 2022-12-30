@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Month;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,11 +11,10 @@ class CategoryController extends Controller
     
     public function index(Month $month) {
 
-            return view ('category.index', [
-            'categories' => Category::with('expenses')
-                ->VisibleByMonth($month)
-                ->simplePaginate(4),
-            'month' => $month
+        return view ('category.index', [
+        'categories' => Category::with('expenses')
+            ->simplePaginate(4),
+        'month' => $month
         ]);
     } 
     
@@ -29,11 +27,7 @@ class CategoryController extends Controller
         
         $attributes = $request->validate ([
             'name' => 'required|string|min:3|max:255',
-        ]);
-        
-        $attributes += [
-            'month_id' => Carbon::parse(now())->format('m')
-        ];
+        ]); 
 
         Category::create($attributes);
         

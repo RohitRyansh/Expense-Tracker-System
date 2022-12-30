@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('month_id')->constrained()->cascadeOnDelete();
             $table->string('item_name');
             $table->string('slug');
             $table->date('date_of_expense');

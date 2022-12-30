@@ -20,7 +20,7 @@
             </tr>
             @foreach($categories as $category)
             <tr>
-            <td><a  href=" {{ route('categories.month.expenses', [$month, $category])}} ">{{ $category->name }}</a></td>
+            <td><a href=" {{ route('categories.month.expenses', [$month, $category])}} ">{{ $category->name }}</a></td>
                 <td>  {{ $category->created_at  }}  </td>
                 <td>
                     <div class="btn-group">
@@ -35,7 +35,7 @@
             @endforeach
         </table>
         @else
-        <h1 style="text-align: center;">No Category Exist</h1>      
+            <h1 style="text-align: center;">No Category Exist</h1>      
         @endif
     </div>
     {{  $categories->links() }} 

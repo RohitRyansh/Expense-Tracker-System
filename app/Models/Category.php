@@ -14,7 +14,7 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'month_id',
+        // 'month_id',
     ];
 
     public function sluggable(): array {
@@ -30,10 +30,13 @@ class Category extends Model
         return $this->hasMany(Expense::class);
     }
 
-    public function scopeVisibleByMonth($query, $month) {
+    // public function scopeVisibleByMonth($query, $month) {
         
-        return  $query->whereMonth('created_at', '=', $month->id);
-    }
+    //     $expenses = Expense::where('month_id', $month->id)->first();
+    //     if($expenses){
+    //         return  $query->where('id', $expenses->category_id);
+    //     }
+    // }
 
     public function scopeVisibleTo($query) {
         

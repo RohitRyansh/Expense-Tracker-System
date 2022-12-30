@@ -30,6 +30,6 @@ class Month extends Model
 
     public function expenses() {
 
-        return $this->hasManyThrough(Expense::class, Category::class);
+        return $this->hasMany(Expense::class);
     }
 }

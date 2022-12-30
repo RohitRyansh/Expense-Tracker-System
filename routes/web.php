@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     
     Route::controller(CategoryController::class)->group(function () {
          
-        Route::get ('/categories/{month:slug}/month', 'index')->name ('categories.month');
+        Route::get ('/categories/{month}/month', 'index')->name ('categories.month');
         
         Route::get ('/categories/create', 'create')->name ('categories.create');
         
@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(ExpenseController::class)->group(function () {
         
-        Route::get ('/categories/{month:slug}/{category:slug}/expenses', 'index')->name ('categories.month.expenses');
+        Route::get ('/categories/{month}/{category}/expenses', 'index')->name ('categories.month.expenses');
         
         Route::get ('/expenses/create', 'create')->name('expenses.create');
         

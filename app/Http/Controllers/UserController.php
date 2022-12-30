@@ -9,32 +9,32 @@ class UserController extends Controller
     public function index() {
 
         $j = 0;
+        
         $comparisions = [];
 
-        $months = Month::with('categories','expenses')
-            ->get();
+        $months = Month::with('expenses')->get();
 
-            for ($i= 0; $i < $months->count() ; $i++) {
+        for ($i= 0; $i < $months->count() ; $i++) {
 
-                if ($i == 0) {
-                    $comparisions[] += 0;
-                    continue;
-                }
-                
-                $previous_month =  $months[$j];
-                $current_month =  $months[$i];
-                $j++;
-                
-                if ($current_month->total_expenses == 0) {
-                    
-                    $comparisions[] = $current_month->total_expenses;
-                    continue;
-                }
-                
-                $comparisions[] = ($current_month->total_expenses
-                    - $previous_month->total_expenses)
-                    / $current_month->total_expenses * 100;    
+            if ($i == 0) {
+                $comparisions[] += 0;
+                continue;
             }
+            
+            $previous_month =  $months[$j];
+            $current_month =  $months[$i];
+            $j++;
+            
+            if ($current_month->total_expenses == 0) {
+                
+                $comparisions[] = $current_month->total_expenses;
+                continue;
+            }
+            
+            $comparisions[] = ($current_month->total_expenses
+                - $previous_month->total_expenses)
+                / $current_month->total_expenses * 100;    
+        }
 
         for ($i = 0; $i < $months->count(); $i++) {
 
@@ -45,7 +45,7 @@ class UserController extends Controller
         }
 
         return view ('user.dashboard',[
-            'months' => $months,
+            'months' => Month::with('expenses')->get(),
         ]);
     }
 }

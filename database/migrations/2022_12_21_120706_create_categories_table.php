@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('month_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('month_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug');
             $table->integer('created_by')->default(1);
